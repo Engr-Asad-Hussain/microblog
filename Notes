@@ -19,3 +19,7 @@ FLASK_APP=microblog.py
 SECRET_KEY of FLASK_APP:
 Why we need secret_key in flask?
 The SECRET_KEY configuration variable that I added as the only configuration item is an important part in most Flask applications. Flask and some of its extensions use the value of the secret key as a cryptographic key, useful to generate signatures or tokens. The Flask-WTF extension uses it to protect web forms against a nasty attack called Cross-Site Request Forgery or CSRF (pronounced "seasurf"). As its name implies, the secret key is supposed to be secret, as the strength of the tokens and signatures generated with it depends on no person outside of the trusted maintainers of the application knowing it.
+
+
+.env vs .flaskenv
+While the .env and .flaskenv files are similar, Flask expects Flask's own configuration variables to be in .flaskenv, while application configuration variables (including some that can be of a sensitive nature) to be in .env. The .flaskenv file can be added to your source control, as it does not contain any secrets or passwords. The .env file is not supposed to be added to source control to ensure that your secrets are protected.

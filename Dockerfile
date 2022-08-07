@@ -1,9 +1,14 @@
 FROM python:slim
 
+# The useradd microblog command creates a new user named microblog. 
+# Most container images have root as the default user, but it is not a good practice to 
+# run an application as root, so I create my own user.
 RUN useradd microblog
 
+# The WORKDIR command sets a default directory where the application is going to be installed.
 WORKDIR /home/microblog
 
+# The COPY command transfers files from your machine to the container file syste
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
 RUN venv/bin/pip install -r requirements.txt

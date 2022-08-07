@@ -3,6 +3,15 @@ source venv/bin/activate
 flask db upgrade
 flask translate compile
 
+"""
+Note the exec that precedes the gunicorn command. In a shell script, exec triggers the 
+process running the script to be replaced with the command given, instead of starting it 
+as a new process. This is important, because Docker associates the life of the container 
+to the first process that runs on it. In cases like this one, where the start up process 
+is not the main process of the container, you need to make sure that the main process 
+takes the place of that first process to ensure that the container is not terminated 
+early by Docker.
+"""
 exec gunicorn -b :5000 --access-logfile - --error-logfile - microblog:app
 
 # The parameters are pretty much self-explanatory: We are telling Gunicorn that we want to 

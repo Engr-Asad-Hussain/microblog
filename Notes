@@ -22,4 +22,8 @@ The SECRET_KEY configuration variable that I added as the only configuration ite
 
 
 .env vs .flaskenv
-While the .env and .flaskenv files are similar, Flask expects Flask's own configuration variables to be in .flaskenv, while application configuration variables (including some that can be of a sensitive nature) to be in .env. The .flaskenv file can be added to your source control, as it does not contain any secrets or passwords. The .env file is not supposed to be added to source control to ensure that your secrets are protected.
+While the .env and .flaskenv files are similar, Flask expects Flask's own configuration variables to be in .flaskenv, while application configuration variables (including some that can be of a sensitive nature) to be in .env. The .flaskenv file can be added to your source control, as it does not contain any secrets or passwords. The .env file is not supposed to be added to source control to ensure that your secrets are protected. 
+.flaskenv variables sets value to app variables, like app.debug, app.config['ENV']
+
+References:
+https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vi-profile-page-and-avatars
